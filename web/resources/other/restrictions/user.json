@@ -1,0 +1,8 @@
+{
+  "login": 25,
+  "name": 100,
+  "lastname": 100,
+  "password": 50,
+  "phone": 20,
+  "email": 150
+}
