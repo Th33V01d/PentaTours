@@ -1,7 +1,7 @@
 {
-  "name": 150,
+  "name_": 150,
   "address": 500,
   "description": 1000,
   "link": 500,
-  "type": 500
+  "type_": 500
 }

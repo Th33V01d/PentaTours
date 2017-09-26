@@ -14,12 +14,11 @@ import ua.nure.stepanenko.SummaryTask4.servlets.constants.SessionAttributes;
 
 @WebServlet(Servlet.USER_HOME)
 public class UserHomeServlet extends HttpServlet {
+    public static final String RES_BUNDLE_NAME = "user-header";
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if(req.getSession().getAttribute(SessionAttributes.LANG) == null) {
-            req.getSession().setAttribute(SessionAttributes.LANG, req.getLocale());
-        }
-        System.out.println(req.getLocale());
+        Work.setSessionLanguage(req, RES_BUNDLE_NAME);
         redirectionByRole(req, resp);
     }
 

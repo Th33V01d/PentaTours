@@ -4,10 +4,45 @@
 <head>
     <title><c:out value="${bundle.title}" /></title>
     <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/resources/css/custom.css" media="screen" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
     <script src="/resources/js/register-validation.js"></script>
 </head>
 <body>
+
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color:#000000; border-color:#000000">
+    <div class="container">
+        <div class="navbar-header page-scroll" style="position: relative">
+            <a class="navbar-brand" href="#page-top" style="padding-top: 0px; position: relative">
+                <img src="/resources/img/logo.png" align="left" height="50">
+                <b>
+                    <h1 style="font-family: Andalus; font-size:40px; color:#eaeaea; position:absolute; align-content:center; bottom:-8; left:95">
+                        PentaTours
+                    </h1>
+                </b>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden">
+                    <a href="/user/home"></a>
+                </li>
+                <li class="page-scroll">
+                    <a href="/user/home">Catalog</a>
+                </li>
+                <li class="page-scroll">
+                    <a href="#about">Orders</a>
+                </li>
+                <li class="page-scroll">
+                    <a href="#contact">Profile</a>
+                </li>
+                <li>
+                    <a href="/logout"><span><i class="glyphicon glyphicon-log-out"></i></span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 <div id="err" data-txt='<c:out value="${bundle.err}"/>'></div>
 <div id="bigfielderr" data-txt='<c:out value="${bundle.bigfielderr}"/>'></div>
@@ -15,7 +50,7 @@
 <div id="phoneoremailerr" data-txt='<c:out value="${bundle.phoneoremailerr}"/>'></div>
 <div id="emailerr" data-txt='<c:out value="${bundle.emailerr}"/>'></div>
 
-<div class="container" style="margin-top:30px">
+<div class="container body-block">
     <div class="col-md-6 col-md-offset-3">
         <div class="panel panel-default">
             <div class="panel-heading">

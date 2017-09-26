@@ -1,7 +1,6 @@
 package ua.nure.stepanenko.SummaryTask4.db;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collections;
@@ -11,6 +10,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DBNames {
+
+    private static final String RESTRICTIONS_FOLDER = "../webapps/ROOT/other/restrictions/";
+
     private DBNames() {}
 
     public static class User extends Entity {
@@ -28,7 +30,7 @@ public class DBNames {
         static {
             Map<String, Integer> map = new HashMap<>();
             try {
-                map = DBNames.getDataFromJSON("./web/resources/other/restrictions/user.json");
+                map = DBNames.getDataFromJSON(RESTRICTIONS_FOLDER + "user.json");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -54,13 +56,14 @@ public class DBNames {
         public static final String TYPE = "type_";
         public static final String DATE_BEGIN = "date_begin";
         public static final String DATE_END = "date_end";
+        public static final String IMAGE_LINK = "image-link";
 
         public static final Map<String, Integer> VARCHAR_COLUMN_LENGTHS;
 
         static {
             Map<String, Integer> map = new HashMap<>();
             try {
-                map = DBNames.getDataFromJSON("./web/resources/other/restrictions/tour.json");
+                map = DBNames.getDataFromJSON(RESTRICTIONS_FOLDER + "tour.json");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -74,30 +77,6 @@ public class DBNames {
         }
     }
 
-    public static class Tag extends Entity {
-        public static final String NAME = "name_";
-        public static final String TYPE = "type_";
-        public static final String DESCRIPTION = "description";
-
-        public static final Map<String, Integer> VARCHAR_COLUMN_LENGTHS;
-
-        static {
-            Map<String, Integer> map = new HashMap<>();
-            try {
-                map = DBNames.getDataFromJSON("./web/resources/other/restrictions/tag.json");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            VARCHAR_COLUMN_LENGTHS = Collections.unmodifiableMap(map);
-        }
-
-        private Tag() {}
-
-        public static String getName() {
-            return "tag";
-        }
-    }
-
     public static class Country extends Entity {
         public static final String NAME = "name_";
 
@@ -106,7 +85,7 @@ public class DBNames {
         static {
             Map<String, Integer> map = new HashMap<>();
             try {
-                map = DBNames.getDataFromJSON("./web/resources/other/restrictions/country.json");
+                map = DBNames.getDataFromJSON(RESTRICTIONS_FOLDER + "country.json");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -131,7 +110,7 @@ public class DBNames {
         static {
             Map<String, Integer> map = new HashMap<>();
             try {
-                map = DBNames.getDataFromJSON("./web/resources/other/restrictions/transport.json");
+                map = DBNames.getDataFromJSON(RESTRICTIONS_FOLDER + "transport.json");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -154,7 +133,7 @@ public class DBNames {
         static {
             Map<String, Integer> map = new HashMap<>();
             try {
-                map = DBNames.getDataFromJSON("./web/resources/other/restrictions/city.json");
+                map = DBNames.getDataFromJSON(RESTRICTIONS_FOLDER + "city.json");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -183,7 +162,7 @@ public class DBNames {
         static {
             Map<String, Integer> map = new HashMap<>();
             try {
-                map = DBNames.getDataFromJSON("./web/resources/other/restrictions/order.json");
+                map = DBNames.getDataFromJSON(RESTRICTIONS_FOLDER + "order.json");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -211,7 +190,7 @@ public class DBNames {
         static {
             Map<String, Integer> map = new HashMap<>();
             try {
-                map = DBNames.getDataFromJSON("./web/resources/other/restrictions/accom.json");
+                map = DBNames.getDataFromJSON(RESTRICTIONS_FOLDER + "accom.json");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -283,8 +262,6 @@ public class DBNames {
 
         byte[] bytes = Files.readAllBytes(Paths.get(filePath));
         data = new String(bytes, "ISO-8859-1");
-
-        System.out.println(data);
 
         Pattern pattern = Pattern.compile("(?m)\"(\\w+)\": (\\d+)");
         Matcher matcher = pattern.matcher(data);

@@ -6,6 +6,7 @@ import ua.nure.stepanenko.SummaryTask4.exceptions.BigFieldSizeException;
 import ua.nure.stepanenko.SummaryTask4.exceptions.NullFieldException;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 
 public class Tour extends Entity {
@@ -20,6 +21,10 @@ public class Tour extends Entity {
     private TourType type;
     private Timestamp date_begin;
     private Timestamp date_end;
+    private String image_link;
+    private List<Accommodation> accommodations;
+    private List<Transport> transports;
+    private List<City> cities;
 
     public Tour(String name,
                 String description,
@@ -31,16 +36,19 @@ public class Tour extends Entity {
                 double discount_step,
                 TourType type,
                 Timestamp date_begin,
-                Timestamp date_end) throws NullFieldException, BigFieldSizeException {
+                Timestamp date_end,
+                String image_link) throws NullFieldException, BigFieldSizeException {
 
         if(name == null ||
                 quantity < 1 ||
-                description == null) {
+                description == null ||
+                image_link == null) {
             throw new NullFieldException();
         }
 
         if(name.length() > DBNames.Tour.VARCHAR_COLUMN_LENGTHS.get(DBNames.Tour.NAME) ||
-                description.length() > DBNames.Tour.VARCHAR_COLUMN_LENGTHS.get(DBNames.Tour.DESCRIPTION)) {
+                description.length() > DBNames.Tour.VARCHAR_COLUMN_LENGTHS.get(DBNames.Tour.DESCRIPTION) ||
+                image_link.length() > DBNames.Tour.VARCHAR_COLUMN_LENGTHS.get(DBNames.Tour.IMAGE_LINK)) {
             throw new BigFieldSizeException();
         }
 
@@ -55,6 +63,7 @@ public class Tour extends Entity {
         this.type = type;
         this.date_begin = date_begin;
         this.date_end = date_end;
+        this.image_link = image_link;
     }
 
 
@@ -146,5 +155,37 @@ public class Tour extends Entity {
 
     public void setDate_end(Timestamp date_end) {
         this.date_end = date_end;
+    }
+
+    public String getImage_link() {
+        return image_link;
+    }
+
+    public void setImage_link(String image_link) {
+        this.image_link = image_link;
+    }
+
+    public List<Accommodation> getAccommodations() {
+        return accommodations;
+    }
+
+    public void setAccommodations(List<Accommodation> accommodations) {
+        this.accommodations = accommodations;
+    }
+
+    public List<Transport> getTransports() {
+        return transports;
+    }
+
+    public void setTransports(List<Transport> transports) {
+        this.transports = transports;
+    }
+
+    public List<City> getCities() {
+        return cities;
+    }
+
+    public void setCities(List<City> cities) {
+        this.cities = cities;
     }
 }

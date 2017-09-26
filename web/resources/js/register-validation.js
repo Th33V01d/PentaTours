@@ -65,16 +65,12 @@ function validate(form, document) {
     resetAllErrors(elems);
 
     validateElem(elems.login, logincheck, errmsg, jsondata.login, bigfieldmsg);
-    validateElem(elems.password, passcheck, errmsg, jsondata.password, bigfieldmsg);
-    validateElem(elems.password2, passmatchcond, passmatcherr, jsondata.password, bigfieldmsg);
-    validateElem(elems.name, namecheck, errmsg, jsondata.name, bigfieldmsg);
+    validateElem(elems.password, passcheck, errmsg, jsondata.password_, bigfieldmsg);
+    validateElem(elems.password2, passmatchcond, passmatcherr, jsondata.password_, bigfieldmsg);
+    validateElem(elems.name, namecheck, errmsg, jsondata.name_, bigfieldmsg);
     validateElem(elems.lastname, lastnamecheck, errmsg, jsondata.lastname, bigfieldmsg);
-    if (!elems.email.value) {
-        validateElem(elems.phone, phonecheck, phoneoremailerr, jsondata.phone, bigfieldmsg);
-    }
-    else {
-        validateElem(elems.email, emailcheck, emailerr, jsondata.email, bigfieldmsg);
-    }
+    validateElem(elems.phone, phonecheck, phoneoremailerr, jsondata.phone, bigfieldmsg);
+    validateElem(elems.email, emailcheck, emailerr, jsondata.email, bigfieldmsg);
 
     if (validated) {
         form.submit();

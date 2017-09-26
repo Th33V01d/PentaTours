@@ -7,6 +7,7 @@ import ua.nure.stepanenko.SummaryTask4.servlets.constants.SessionAttributes;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+import java.io.File;
 import java.io.IOException;
 
 @WebServlet(Servlet.INDEX)
