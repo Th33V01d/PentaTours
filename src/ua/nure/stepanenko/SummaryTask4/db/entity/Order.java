@@ -18,7 +18,8 @@ public class Order extends Entity {
     private Timestamp date_time;
     private String notes;
 
-    public Order(long user_id,
+    public Order(int id,
+                 long user_id,
                  long tour_id,
                  double discount,
                  int quantity,

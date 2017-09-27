@@ -8,7 +8,8 @@ public class City extends Entity {
     private String name;
     private long country_id;
 
-    public City(String name,
+    public City(int id,
+                String name,
                 long country_id) throws NullFieldException, BigFieldSizeException {
         if(name == null ||
                 country_id == 0) {
@@ -20,7 +21,7 @@ public class City extends Entity {
 
         // todo: поиск страны по ид; выброс исключения, если таковой не обнаруживается.
         // todo: for each reference - do ref id test!!!
-
+        this.id = id;
         this.name = name;
         this.country_id = country_id;
     }

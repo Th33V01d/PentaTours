@@ -10,7 +10,8 @@ public class Transport extends Entity {
     private String description;
     private int quantity;
 
-    public Transport(String name,
+    public Transport(int id,
+                     String name,
                      String type,
                      String description,
                      int quantity) throws NullFieldException, BigFieldSizeException {
@@ -25,6 +26,7 @@ public class Transport extends Entity {
                 description.length() > DBNames.Transport.VARCHAR_COLUMN_LENGTHS.get(DBNames.Transport.DESCRIPTION)) {
             throw new BigFieldSizeException();
         }
+        this.id = id;
         this.name = name;
         this.type = type;
         this.description = description;

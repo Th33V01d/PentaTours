@@ -15,7 +15,10 @@ public class UserService {
         User user = userDAO.getUser(login);
         if(user != null) {
             if (user.getPassword().equals(password)) {
-                return user;
+                System.out.println(user.isBanned());
+                if(!user.isBanned()) {
+                    return user;
+                }
             }
         }
         return null;
@@ -52,4 +55,6 @@ public class UserService {
 
         return res;
     }
+
+    private UserService() {}
 }

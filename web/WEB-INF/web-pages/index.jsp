@@ -59,8 +59,8 @@
                             </h1>
                         </b>
                     </div>
-                    <div class="panel-body" style="font-size: 18px">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis sem dui.
+                    <div class="panel-body" style="font-size: 18px; margin-left: 10px;">
+                        <c:out value="${bundle.desc}" />
                     </div>
                 </div>
             </div>
@@ -106,12 +106,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
 
     </body>
 </html>

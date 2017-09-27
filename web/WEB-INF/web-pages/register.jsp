@@ -13,7 +13,7 @@
 <nav class="navbar navbar-default navbar-fixed-top" style="background-color:#000000; border-color:#000000">
     <div class="container">
         <div class="navbar-header page-scroll" style="position: relative">
-            <a class="navbar-brand" href="#page-top" style="padding-top: 0px; position: relative">
+            <a class="navbar-brand" href="/home" style="padding-top: 0px; position: relative">
                 <img src="/resources/img/logo.png" align="left" height="50">
                 <b>
                     <h1 style="font-family: Andalus; font-size:40px; color:#eaeaea; position:absolute; align-content:center; bottom:-8; left:95">
@@ -21,25 +21,6 @@
                     </h1>
                 </b>
             </a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="hidden">
-                    <a href="/user/home"></a>
-                </li>
-                <li class="page-scroll">
-                    <a href="/user/home">Catalog</a>
-                </li>
-                <li class="page-scroll">
-                    <a href="#about">Orders</a>
-                </li>
-                <li class="page-scroll">
-                    <a href="#contact">Profile</a>
-                </li>
-                <li>
-                    <a href="/logout"><span><i class="glyphicon glyphicon-log-out"></i></span></a>
-                </li>
-            </ul>
         </div>
     </div>
 </nav>

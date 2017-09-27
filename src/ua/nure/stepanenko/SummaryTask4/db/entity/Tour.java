@@ -3,7 +3,9 @@ package ua.nure.stepanenko.SummaryTask4.db.entity;
 import ua.nure.stepanenko.SummaryTask4.db.DBNames;
 import ua.nure.stepanenko.SummaryTask4.db.enums.TourType;
 import ua.nure.stepanenko.SummaryTask4.exceptions.BigFieldSizeException;
+import ua.nure.stepanenko.SummaryTask4.exceptions.DBConnectException;
 import ua.nure.stepanenko.SummaryTask4.exceptions.NullFieldException;
+import ua.nure.stepanenko.SummaryTask4.services.CatalogService;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -26,7 +28,8 @@ public class Tour extends Entity {
     private List<Transport> transports;
     private List<City> cities;
 
-    public Tour(String name,
+    public Tour(int id,
+                String name,
                 String description,
                 int quantity,
                 int booked,
@@ -37,7 +40,7 @@ public class Tour extends Entity {
                 TourType type,
                 Timestamp date_begin,
                 Timestamp date_end,
-                String image_link) throws NullFieldException, BigFieldSizeException {
+                String image_link) throws NullFieldException, BigFieldSizeException, DBConnectException {
 
         if(name == null ||
                 quantity < 1 ||
@@ -52,6 +55,7 @@ public class Tour extends Entity {
             throw new BigFieldSizeException();
         }
 
+        this.id = id;
         this.name = name;
         this.description = description;
         this.quantity = quantity;
@@ -64,6 +68,10 @@ public class Tour extends Entity {
         this.date_begin = date_begin;
         this.date_end = date_end;
         this.image_link = image_link;
+
+        this.accommodations = CatalogService.getAccommodationsByTourId(this.id);
+        this.cities = CatalogService.getCitiesByTourId(this.id);
+        this.transports = CatalogService.getTransportsByTourId(this.id);
     }
 
 

@@ -7,14 +7,14 @@ import ua.nure.stepanenko.SummaryTask4.exceptions.NullFieldException;
 public class Country extends Entity {
     private String name;
 
-    public Country(String name) throws NullFieldException, BigFieldSizeException {
+    public Country(int id, String name) throws NullFieldException, BigFieldSizeException {
         if(name == null) {
             throw new NullFieldException();
         }
         if(name.length() > DBNames.Country.VARCHAR_COLUMN_LENGTHS.get(DBNames.Country.NAME)) {
             throw new BigFieldSizeException();
         }
-
+        this.id = id;
         this.name = name;
     }
 

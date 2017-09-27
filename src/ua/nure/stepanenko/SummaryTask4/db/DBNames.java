@@ -56,7 +56,7 @@ public class DBNames {
         public static final String TYPE = "type_";
         public static final String DATE_BEGIN = "date_begin";
         public static final String DATE_END = "date_end";
-        public static final String IMAGE_LINK = "image-link";
+        public static final String IMAGE_LINK = "image_link";
 
         public static final Map<String, Integer> VARCHAR_COLUMN_LENGTHS;
 
@@ -176,7 +176,7 @@ public class DBNames {
         }
     }
 
-    public static class Accommodation {
+    public static class Accommodation extends Entity {
         public static final String NAME = "name_";
         public static final String CITY = "city";
         public static final String ADDRESS = "address";
@@ -204,50 +204,38 @@ public class DBNames {
         }
     }
 
-    // todo: нужны ли мне вообще таблицы ниже?? (нет).
-//    public static final class TourTag {
-//        public static final String TOUR = "tour";
-//        public static final String TAG = "tag";
-//
-//        private TourTag() {}
-//
-//        public static String getName() {
-//            return "tour_tag";
-//        }
-//    }
-//
-//    public static final class TourAccommodation {
-//        public static final String TOUR = "tour";
-//        public static final String ACCOMMODATION = "accommodation";
-//
-//        private TourAccommodation() {}
-//
-//        public static String getName() {
-//            return "tour_accommodation";
-//        }
-//    }
-//
-//    public static final class TourCity {
-//        public static final String TOUR = "tour";
-//        public static final String CITY = "city";
-//
-//        private TourCity() {}
-//
-//        public static String getName() {
-//            return "tour_city";
-//        }
-//    }
-//
-//    public static final class TourTransport {
-//        public static final String TOUR = "tour";
-//        public static final String TRANSPORT = "transport";
-//
-//        private TourTransport() {}
-//
-//        public static String getName() {
-//            return "tour_transport";
-//        }
-//    }
+    public static final class TourAccommodation extends Entity {
+        public static final String TOUR = "tour";
+        public static final String ACCOMMODATION = "accommodation";
+
+        private TourAccommodation() {}
+
+        public static String getName() {
+            return "tour_accommodation";
+        }
+    }
+
+    public static final class TourCity extends Entity {
+        public static final String TOUR = "tour";
+        public static final String CITY = "city";
+
+        private TourCity() {}
+
+        public static String getName() {
+            return "tour_city";
+        }
+    }
+
+    public static final class TourTransport extends Entity {
+        public static final String TOUR = "tour";
+        public static final String TRANSPORT = "transport";
+
+        private TourTransport() {}
+
+        public static String getName() {
+            return "tour_transport";
+        }
+    }
 
 
     private static abstract class Entity {

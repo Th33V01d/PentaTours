@@ -19,6 +19,7 @@ import java.sql.SQLException;
 @WebServlet(Servlet.REGISTER)
 public class RegisterServlet extends HttpServlet {
     private static final String RES_BUNDLE_NAME = "register";
+    private static final String RES_BUNDLE_NAME_FOR_RESULT = "reg-res";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,6 +30,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         boolean isCreated = false;
+        req.setCharacterEncoding("UTF-8");
         try {
             isCreated = UserService.createUser(req.getParameter("login"),
                     req.getParameter("password"),
@@ -41,6 +43,7 @@ public class RegisterServlet extends HttpServlet {
         }
 
         req.setAttribute(SessionAttributes.REGISTRATION, isCreated);
+        Work.setSessionLanguage(req, RES_BUNDLE_NAME_FOR_RESULT);
 
         req.getRequestDispatcher(Direction.REGISTER_RES).forward(req, resp);
     }

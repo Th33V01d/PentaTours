@@ -12,19 +12,19 @@ h1, h2, h3, h4, h5, h6{
     font-family: 'Open Sans Condensed', sans-serif, sans-serif;
 }
 
-a:link {
+a.tour-link:link {
     color: black;
 }
 
-a:visited {
+a.tour-link:visited {
     color: black;
 }
 
-a:hover {
+a.tour-link:hover {
     color: black;
 }
 
-a:active {
+a.tour-link:active {
     color: black;
 }
 
@@ -59,12 +59,15 @@ ul.tour-list li.helper {
     overflow: hidden;
 }
 
+.sort-elem {
+    margin-bottom: 10px;
+}
 
 .body-block {
     margin-top: 70px;
 }
 
-.tour-notfound {
+.simple-txt-panel {
     margin-top: 30px;
     margin-bottom: 30px;
     text-align: center;

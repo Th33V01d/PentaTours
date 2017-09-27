@@ -13,11 +13,7 @@ public class DBManager {
     private static DBManager manager;
 
     private DBManager() throws DBConnectException {
-        String user = "root";
-        String password = "FjRbct69";
-
-        connectionString = "jdbc:mysql://localhost/pentatours?user=" + user +
-                "&password=" + password;
+        connectionString = "jdbc:mysql://localhost/pentatours";
 
         try {
             Driver driver = new com.mysql.jdbc.Driver();

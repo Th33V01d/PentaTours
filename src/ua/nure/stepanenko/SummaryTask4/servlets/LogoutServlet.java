@@ -23,6 +23,8 @@ public class LogoutServlet extends HttpServlet {
     }
 
     private void doWork(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+
         req.getSession().setAttribute(SessionAttributes.LOGIN, null);
         req.getSession().setAttribute(SessionAttributes.ROLE, null);
 
