@@ -32,10 +32,10 @@
                     <a href="/user/home">${bundle.catalog}</a>
                 </li>
                 <li class="page-scroll">
-                    <a href="#about">${bundle.orders}</a>
+                    <a href="/coming-soon">${bundle.orders}</a>
                 </li>
                 <li class="page-scroll">
-                    <a href="#contact">${bundle.profile}</a>
+                    <a href="/coming-soon">${bundle.profile}</a>
                 </li>
                 <li>
                     <a href="/logout"><span><i class="glyphicon glyphicon-log-out"></i></span></a>
@@ -125,15 +125,14 @@
             </div>
             </c:if>
 
-            <!-- todo: ПЕРЕДЕЛАТЬ ЭТО!!! вставить линку на тур! и на заказ тура! -->
             <c:if test="${found == true}">
             <c:forEach items="${tours}" var="tour">
             <div class="panel panel-default">
                 <div class="panel-heading" style="text-align: center">
-                    <a class="tour-link" href="#"><strong>${tour.name}</strong></a>
+                    <strong>${tour.name}</strong>
                 </div>
                 <div class="panel-body">
-                    <form role="form" action="#" method="post" class="tour-block">
+                    <form role="form" action="/buy" method="get" class="tour-block">
                         <img class="tour-img" src="${tour.image_link}">
                         <p class="tour-desc">
                             <c:out value="${tour.description}"/>
@@ -145,6 +144,8 @@
                             <br>
                             <c:out value="${bundle.price}"/><c:out value="${tour.price}"/>
                         </p>
+                        <input type="hidden" name="tourId" value="${tour.id}">
+                        <input type="hidden" name="quant" value="1">
                         <button type="submit" class="btn btn-success btn-primary btn-block"><c:out value="${bundle.book}"/></button>
                     </form>
                 </div>
@@ -156,7 +157,7 @@
 </div>
 
 <script>
-    function validateNumFields() {
+    function validateNumFields(tourid) {
         var validated = true;
 
         var price_min = document.forms["queryForm"]["price_min"].value;
@@ -186,7 +187,6 @@
         }
 
         if (validated) {
-            alert("success!");
             document.forms["queryForm"].submit();
         }
     }

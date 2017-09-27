@@ -28,62 +28,15 @@ public class UserHomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Work.setSessionLanguage(req, RES_BUNDLE_NAME);
-        try {
-            req.setAttribute("cities", CatalogService.getAllCities());
-            req.setAttribute("accomms", CatalogService.getAllAccommodationTypes());
-            req.setAttribute("transports", CatalogService.getAllTransportTypes());
-        } catch (DBConnectException e) {
-            e.printStackTrace();
+        if (UserRole.USER.getRoleName().equals(req.getSession().getAttribute(SessionAttributes.ROLE))) {
+            CatalogService.setSortParameters(req);
+            CatalogService.searchTours(req);
         }
-
-        String city = null;
-        String transport = null;
-        String accommodation = null;
-        Double priceMin = null;
-        Double priceMax = null;
-        Integer quantity = null;
-
-        city = req.getParameter("city");
-        transport = req.getParameter("transport");
-        accommodation = req.getParameter("accommodation");
-        String price_min = req.getParameter("price_min");
-        String price_max = req.getParameter("price_max");
-        String quant = req.getParameter("quant");
-
-        if(price_min != null) {
-            if(!"".equals(price_min)) {
-                priceMin = Double.parseDouble(price_min);
-            }
-        }
-        if(price_max != null) {
-            if(!"".equals(price_max)) {
-                priceMax = Double.parseDouble(price_max);
-            }
-        }
-        if(quant != null) {
-            if(!"".equals(quant)) {
-                quantity = Integer.parseInt(quant);
-            }
-        }
-
-        List<Tour> tours = new ArrayList<>();
-        boolean found = false;
-
-        try {
-            tours = CatalogService.searchTours(city,transport, accommodation, priceMin, priceMax, quantity);
-        } catch (DBConnectException | BigFieldSizeException | NullFieldException e) {
-            System.out.println(e.getMessage());
-        }
-
-        if(tours.size() > 0) {
-            found = true;
-        }
-
-        req.setAttribute("found", found);
-        req.setAttribute("tours", tours);
 
         redirectionByRole(req, resp);
     }
+
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -22,6 +22,10 @@ public class Direction {
     public static final String MANAGER_HOME = MANAGER_FOLDER + HOME_JSP;
     public static final String ADMIN_HOME = MANAGER_FOLDER + HOME_JSP;
 
+    public static final String INFO = FOLDER + "info.jsp";
+
+    public static final String COMING_SOON = FOLDER + "coming-soon.jsp";
+
 
     public static final Map<UserRole, String> HOME_PAGES_BY_ROLES;
     static {

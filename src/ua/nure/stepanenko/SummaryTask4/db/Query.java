@@ -37,6 +37,18 @@ public class Query {
             " where " + DBNames.Transport.ID + " in (select " + DBNames.TourTransport.TRANSPORT + " from " + DBNames.TourTransport.getName() +
             " where " + DBNames.TourTransport.TOUR + "=?);";
 
+    public static final String SELECT_TOUR_BY_ID = "select * from " + DBNames.Tour.getName() + " where id=?";
+
+    public static final String INSERT_ORDER = "insert into " + DBNames.Order.getName() +
+            " values(default, ?, ?, ?, ?, ?, default, now(), ?)";
+
+    public static final String UPDATE_TOUR = "update " + DBNames.Tour.getName() +
+            " set " + DBNames.Tour.BOOKED + " = " + DBNames.Tour.BOOKED + " + 1" +
+            " where " + DBNames.Tour.ID + "=?";
+
+
+
+
     private Query() {}
 
     public static String catalogQueryBuilder(@Nullable String city,

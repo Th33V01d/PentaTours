@@ -13,5 +13,9 @@ public class Servlet {
 
     public static final String USER_HOME = "/user/home";
 
+    public static final String BUY_TOUR = "/buy";
+
+    public static final String COMING_SOON = "/coming-soon";
+
     private Servlet() {}
 }

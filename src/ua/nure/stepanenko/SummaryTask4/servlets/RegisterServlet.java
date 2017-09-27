@@ -1,7 +1,5 @@
 package ua.nure.stepanenko.SummaryTask4.servlets;
 
-import org.json.simple.JSONObject;
-import ua.nure.stepanenko.SummaryTask4.db.DBNames;
 import ua.nure.stepanenko.SummaryTask4.exceptions.DBConnectException;
 import ua.nure.stepanenko.SummaryTask4.services.UserService;
 import ua.nure.stepanenko.SummaryTask4.servlets.constants.Direction;
@@ -42,7 +40,7 @@ public class RegisterServlet extends HttpServlet {
             System.out.println(e.getMessage());
         }
 
-        req.setAttribute(SessionAttributes.REGISTRATION, isCreated);
+        req.setAttribute(SessionAttributes.ERROR, isCreated);
         Work.setSessionLanguage(req, RES_BUNDLE_NAME_FOR_RESULT);
 
         req.getRequestDispatcher(Direction.REGISTER_RES).forward(req, resp);
