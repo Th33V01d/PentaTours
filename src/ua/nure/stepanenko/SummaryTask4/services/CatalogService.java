@@ -43,7 +43,7 @@ public class CatalogService {
         }
     }
 
-    public static void searchTours(HttpServletRequest req) {
+    public static void searchToursAngPutThemInRequest(HttpServletRequest req) {
         String city = null;
         String transport = null;
         String accommodation = null;
@@ -58,6 +58,25 @@ public class CatalogService {
         String price_max = req.getParameter("price_max");
         String quant = req.getParameter("quant");
 
+        boolean found = false;
+
+        List<Tour> tours = getTours(city, transport, accommodation, priceMin, priceMax, quantity, price_min, price_max, quant);
+
+        if(tours != null) {
+            if (tours.size() > 0) {
+                found = true;
+            }
+        }
+
+        req.setAttribute("found", found);
+        req.setAttribute("tours", tours);
+    }
+
+    public static List<Tour> getTours() {
+        return getTours(null, null, null, null, null, null, null, null, null);
+    }
+
+    public static List<Tour> getTours(String city, String transport, String accommodation, Double priceMin, Double priceMax, Integer quantity, String price_min, String price_max, String quant) {
         if(price_min != null) {
             if(!"".equals(price_min)) {
                 priceMin = Double.parseDouble(price_min);
@@ -75,7 +94,6 @@ public class CatalogService {
         }
 
         List<Tour> tours = new ArrayList<>();
-        boolean found = false;
 
         try {
             CatalogDAO catalogDAO = new CatalogDAO(DBManager.getInstance());
@@ -83,13 +101,7 @@ public class CatalogService {
         } catch (DBConnectException | BigFieldSizeException | NullFieldException e) {
             System.out.println(e.getMessage());
         }
-
-        if(tours.size() > 0) {
-            found = true;
-        }
-
-        req.setAttribute("found", found);
-        req.setAttribute("tours", tours);
+        return tours;
     }
 
     public static List<City> getCitiesByTourId(int id) throws DBConnectException {

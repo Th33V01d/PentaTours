@@ -74,126 +74,63 @@ public class Tour extends Entity {
         this.transports = CatalogService.getTransportsByTourId(this.id);
     }
 
-
-    // todo: в сеттерах сделать проверку инфы и запрос на UPDATE
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public int getQuantity() {
         return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public int getBooked() {
         return booked;
     }
 
-    public void setBooked(int booked) {
-        this.booked = booked;
-    }
-
     public double getPrice() {
         return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public boolean isFire() {
         return isFire;
     }
 
-    public void setFire(boolean fire) {
-        isFire = fire;
-    }
-
     public double getDiscount_max() {
         return discount_max;
-    }
-
-    public void setDiscount_max(double discount_max) {
-        this.discount_max = discount_max;
     }
 
     public double getDiscount_step() {
         return discount_step;
     }
 
-    public void setDiscount_step(double discount_step) {
-        this.discount_step = discount_step;
-    }
-
     public TourType getType() {
         return type;
-    }
-
-    public void setType(TourType type) {
-        this.type = type;
     }
 
     public Timestamp getDate_begin() {
         return date_begin;
     }
 
-    public void setDate_begin(Timestamp date_begin) {
-        this.date_begin = date_begin;
-    }
-
     public Timestamp getDate_end() {
         return date_end;
-    }
-
-    public void setDate_end(Timestamp date_end) {
-        this.date_end = date_end;
     }
 
     public String getImage_link() {
         return image_link;
     }
 
-    public void setImage_link(String image_link) {
-        this.image_link = image_link;
-    }
-
     public List<Accommodation> getAccommodations() {
         return accommodations;
-    }
-
-    public void setAccommodations(List<Accommodation> accommodations) {
-        this.accommodations = accommodations;
     }
 
     public List<Transport> getTransports() {
         return transports;
     }
 
-    public void setTransports(List<Transport> transports) {
-        this.transports = transports;
-    }
-
     public List<City> getCities() {
         return cities;
-    }
-
-    public void setCities(List<City> cities) {
-        this.cities = cities;
     }
 }

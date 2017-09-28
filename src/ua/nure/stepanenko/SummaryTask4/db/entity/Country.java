@@ -18,14 +18,7 @@ public class Country extends Entity {
         this.name = name;
     }
 
-    // todo: в сеттерах сделать проверку инфы и запрос на UPDATE
-
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

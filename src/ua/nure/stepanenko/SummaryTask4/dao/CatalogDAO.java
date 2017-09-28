@@ -230,7 +230,7 @@ public class CatalogDAO extends AbstractDAO {
 
                 insertOrder.executeUpdate();
 
-                PreparedStatement updateTour = conn.prepareStatement(Query.UPDATE_TOUR);
+                PreparedStatement updateTour = conn.prepareStatement(Query.UPDATE_TOUR_INCREMENT);
                 updateTour.setInt(1, tourId);
 
                 conn.commit();

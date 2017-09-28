@@ -55,55 +55,27 @@ public class Accommodation extends Entity {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public long getCity_id() {
         return city_id;
-    }
-
-    public void setCity_id(long city_id) {
-        this.city_id = city_id;
     }
 
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public int getStars() {
         return stars;
-    }
-
-    public void setStars(int stars) {
-        this.stars = stars;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getLink() {
         return link;
     }
 
-    public void setLink(String link) {
-        this.link = link;
-    }
-
     public String getType() {
         return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 }

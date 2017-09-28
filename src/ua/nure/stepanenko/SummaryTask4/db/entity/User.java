@@ -60,70 +60,35 @@ public class User extends Entity {
         this.isBanned = isBanned;
     }
 
-    // todo: в сеттерах сделать проверку инфы и запрос на UPDATE
-
-
     public String getLogin() {
         return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getLastname() {
         return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public UserRole getRole() {
         return role;
-    }
-
-    public void setRole(UserRole role) {
-        this.role = role;
     }
 
     public String getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public boolean isBanned() {
         return isBanned;
-    }
-
-    public void setBanned(boolean banned) {
-        isBanned = banned;
     }
 }

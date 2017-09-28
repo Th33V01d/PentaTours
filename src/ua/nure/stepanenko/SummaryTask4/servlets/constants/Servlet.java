@@ -1,7 +1,6 @@
 package ua.nure.stepanenko.SummaryTask4.servlets.constants;
 
 public class Servlet {
-    //private static final String USER_HOME = ;
 
     public static final String INDEX = "/home";
     public static final String INDEX_ERROR = INDEX + "?err=true";
@@ -16,6 +15,8 @@ public class Servlet {
     public static final String BUY_TOUR = "/buy";
 
     public static final String COMING_SOON = "/coming-soon";
+
+    public static final String ADM_UPD = "/adm-upd";
 
     private Servlet() {}
 }

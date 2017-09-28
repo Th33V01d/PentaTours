@@ -55,63 +55,31 @@ public class Order extends Entity {
         return user_id;
     }
 
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
-    }
-
     public long getTour_id() {
         return tour_id;
-    }
-
-    public void setTour_id(long tour_id) {
-        this.tour_id = tour_id;
     }
 
     public double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(double discount) {
-        this.discount = discount;
-    }
-
     public int getQuantity() {
         return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public double getTotal_sum() {
         return total_sum;
     }
 
-    public void setTotal_sum(double total_sum) {
-        this.total_sum = total_sum;
-    }
-
     public OrderStatus getStatus() {
         return status;
-    }
-
-    public void setStatus(OrderStatus status) {
-        this.status = status;
     }
 
     public Timestamp getDate_time() {
         return date_time;
     }
 
-    public void setDate_time(Timestamp date_time) {
-        this.date_time = date_time;
-    }
-
     public String getNotes() {
         return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
     }
 }

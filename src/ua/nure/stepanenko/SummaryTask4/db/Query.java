@@ -42,10 +42,36 @@ public class Query {
     public static final String INSERT_ORDER = "insert into " + DBNames.Order.getName() +
             " values(default, ?, ?, ?, ?, ?, default, now(), ?)";
 
-    public static final String UPDATE_TOUR = "update " + DBNames.Tour.getName() +
+    public static final String UPDATE_TOUR_INCREMENT = "update " + DBNames.Tour.getName() +
             " set " + DBNames.Tour.BOOKED + " = " + DBNames.Tour.BOOKED + " + 1" +
             " where " + DBNames.Tour.ID + "=?";
 
+    public static final String UPDATE_TOUR_DECREMENT = "update " + DBNames.Tour.getName() +
+            " set " + DBNames.Tour.BOOKED + " = " + DBNames.Tour.BOOKED + " - 1" +
+            " where " + DBNames.Tour.ID + "=?";
+
+    public static final String SELECT_ALL_ORDERS = "select order_.id as id, \n" +
+            " order_.user_ as user_, \n" +
+            "    user_.login as user_login, \n" +
+            "    order_.tour as tour, \n" +
+            "    tour.name_ as tour_name,\n" +
+            "    order_.discount as discount,\n" +
+            "    order_.quantity as quantity,\n" +
+            "    order_.total_sum as total_sum,\n" +
+            "    order_.status_ as status_,\n" +
+            "    order_.date_time as date_time,\n" +
+            "    order_.notes as notes\n" +
+            " from order_ inner join user_ \n" +
+            " on order_.user_ = user_.id\n" +
+            " inner join tour on order_.tour = tour.id";
+
+    public static final String UPDATE_TOUR_FIRE = "update " + DBNames.Tour.getName() +
+            " set " + DBNames.Tour.ISFIRE + "=?" +
+            " where " + DBNames.Tour.ID + "=?";
+
+    public static final String UPDATE_ORDER_STATUS = "update " + DBNames.Order.getName() +
+            " set " + DBNames.Order.STATUS + "=?" +
+            " where " + DBNames.Order.ID + "=?";
 
 
 

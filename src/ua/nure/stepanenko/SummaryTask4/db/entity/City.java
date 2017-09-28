@@ -19,8 +19,6 @@ public class City extends Entity {
             throw new BigFieldSizeException();
         }
 
-        // todo: поиск страны по ид; выброс исключения, если таковой не обнаруживается.
-        // todo: for each reference - do ref id test!!!
         this.id = id;
         this.name = name;
         this.country_id = country_id;
@@ -30,15 +28,7 @@ public class City extends Entity {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public long getCountry_id() {
         return country_id;
-    }
-
-    public void setCountry_id(long country_id) {
-        this.country_id = country_id;
     }
 }

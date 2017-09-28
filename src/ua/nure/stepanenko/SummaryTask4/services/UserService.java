@@ -10,6 +10,8 @@ import ua.nure.stepanenko.SummaryTask4.exceptions.DBConnectException;
 import java.sql.SQLException;
 
 public class UserService {
+    private UserService() {}
+
     public static User getUser(String login, String password) throws DBConnectException {
         UserDAO userDAO = new UserDAO(DBManager.getInstance());
         User user = userDAO.getUser(login);
@@ -55,6 +57,4 @@ public class UserService {
 
         return res;
     }
-
-    private UserService() {}
 }
