@@ -1,6 +1,6 @@
 package ua.nure.stepanenko.SummaryTask4.servlets;
 
-import ua.nure.stepanenko.SummaryTask4.exceptions.DBConnectException;
+import ua.nure.stepanenko.SummaryTask4.db.enums.UserRole;
 import ua.nure.stepanenko.SummaryTask4.services.CatalogService;
 import ua.nure.stepanenko.SummaryTask4.servlets.constants.Direction;
 import ua.nure.stepanenko.SummaryTask4.servlets.constants.Servlet;
@@ -20,33 +20,39 @@ public class BuyTourServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Work.setSessionLanguage(req, RES_BUNDLE_NAME);
+        boolean suc;
+        String role = (String) req.getSession().getAttribute(SessionAttributes.ROLE);
+        if(UserRole.USER.getRoleName().equals(role)) {
 
-        String tourId = req.getParameter("tourId");
-        String quantity = req.getParameter("quant");
+            String tourId = req.getParameter("tourId");
+            String quantity = req.getParameter("quant");
 
-        boolean err = false;
+            suc = false;
 
-        if(tourId == null || quantity == null) {
-            err = true;
-        }
-        else if ("".equals(tourId) || "".equals(quantity)) {
-            err = true;
-        }
-
-        if(!err) {
-            int quant = 0;
-            int tour = 0;
-            try {
-                quant = Integer.parseInt(quantity);
-                tour = Integer.parseInt(tourId);
-            } catch (NumberFormatException e) {
-                System.out.println(e.getMessage());
+            if (tourId == null || quantity == null) {
+                suc = true;
+            } else if ("".equals(tourId) || "".equals(quantity)) {
+                suc = true;
             }
 
-            err = CatalogService.buyTour(tour, (String) req.getSession().getAttribute(SessionAttributes.LOGIN), quant, req.getParameter("notes"));
-        }
+            if (!suc) {
+                int quant = 0;
+                int tour = 0;
+                try {
+                    quant = Integer.parseInt(quantity);
+                    tour = Integer.parseInt(tourId);
+                } catch (NumberFormatException e) {
+                    System.out.println(e.getMessage());
+                }
 
-        req.setAttribute("err", err);
+                suc = CatalogService.buyTour(tour, (String) req.getSession().getAttribute(SessionAttributes.LOGIN), quant, req.getParameter("notes"));
+            }
+        }
+        else {
+            suc = false;
+        }
+        req.setAttribute("suc", suc);
         req.getRequestDispatcher(Direction.INFO).forward(req, resp);
+
     }
 }

@@ -43,7 +43,7 @@ public class Query {
             " values(default, ?, ?, ?, ?, ?, default, now(), ?)";
 
     public static final String UPDATE_TOUR_INCREMENT = "update " + DBNames.Tour.getName() +
-            " set " + DBNames.Tour.BOOKED + " = " + DBNames.Tour.BOOKED + " + 1" +
+            " set " + DBNames.Tour.BOOKED + " = " + DBNames.Tour.BOOKED + " + ?" +
             " where " + DBNames.Tour.ID + "=?";
 
     public static final String UPDATE_TOUR_DECREMENT = "update " + DBNames.Tour.getName() +
@@ -115,11 +115,16 @@ public class Query {
             }
         }
 
+        base.append(" where ");
+
         if(city != null || transport != null || accommodation != null || price_min != null || price_max != null || quantity!= null) {
-            base.append(" where ");
-            StringBuilder tempWhere = new StringBuilder();
+
+            StringBuilder tempWhere = new StringBuilder(" tour.quantity > tour.booked ");
             if(city != null) {
                 if(!"".equals(city)) {
+                    if (tempWhere.length() != 0) {
+                        tempWhere.append(" and ");
+                    }
                     tempWhere.append("tour_city.city in (select id from city where name_='")
                             .append(city)
                             .append("') ");

@@ -221,8 +221,8 @@ public class CatalogDAO extends AbstractDAO {
                 conn.setAutoCommit(false);
 
                 PreparedStatement insertOrder = conn.prepareStatement(Query.INSERT_ORDER);
-                insertOrder.setInt(1, tourId);
-                insertOrder.setInt(2, userId);
+                insertOrder.setInt(1, userId);
+                insertOrder.setInt(2, tourId);
                 insertOrder.setDouble(3, discount);
                 insertOrder.setInt(4, quantity);
                 insertOrder.setDouble(5, totalSum);
@@ -231,7 +231,10 @@ public class CatalogDAO extends AbstractDAO {
                 insertOrder.executeUpdate();
 
                 PreparedStatement updateTour = conn.prepareStatement(Query.UPDATE_TOUR_INCREMENT);
-                updateTour.setInt(1, tourId);
+                updateTour.setInt(1, quantity);
+                updateTour.setInt(2, tourId);
+
+                updateTour.executeUpdate();
 
                 conn.commit();
             } catch (SQLException e) {

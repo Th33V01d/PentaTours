@@ -40,7 +40,7 @@ public class RegisterServlet extends HttpServlet {
             System.out.println(e.getMessage());
         }
 
-        req.setAttribute(SessionAttributes.ERROR, isCreated);
+        req.setAttribute("reg", isCreated);
         Work.setSessionLanguage(req, RES_BUNDLE_NAME_FOR_RESULT);
 
         req.getRequestDispatcher(Direction.REGISTER_RES).forward(req, resp);

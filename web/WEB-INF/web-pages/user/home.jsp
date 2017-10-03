@@ -48,6 +48,7 @@
 <div id="err_pr" data-txt='<c:out value="${bundle.err_pr}"/>'></div>
 <div id="err_quant" data-txt='<c:out value="${bundle.err_quant}"/>'></div>
 
+
 <div class="container body-block">
     <div class="row ">
         <div class="col-md-4">
@@ -140,13 +141,23 @@
                             <br>
                             <c:out value="${bundle.dates}"/><c:out value="${tour.date_begin.date}.${tour.date_begin.month}.${tour.date_begin.year + 1900}"/> - <c:out value="${tour.date_end.date}.${tour.date_end.month}.${tour.date_end.year + 1900}"/>
                             <br>
-                            <c:out value="${bundle.quant}"/><c:out value="${tour.quantity}"/>
+                            <c:out value="${bundle.quant}"/><c:out value="${tour.quantity - tour.booked}"/>
                             <br>
                             <c:out value="${bundle.price}"/><c:out value="${tour.price}"/>
                         </p>
                         <input type="hidden" name="tourId" value="${tour.id}">
-                        <input type="hidden" name="quant" value="1">
-                        <button type="submit" class="btn btn-success btn-primary btn-block"><c:out value="${bundle.book}"/></button>
+                        <br>
+                        Кол-во:
+                        <%--<c:if test="${(tour.quantity - tour.booked) > 0}">--%>
+                            <input type="text" name="quant">
+                            <button type="button" class="btn btn-success btn-primary" onclick="validateOrderQuantity(${tour.quantity - tour.booked}, this.form)">
+                                <c:out value="${bundle.book}"/>
+                            </button>
+                        <%--</c:if>--%>
+                        <%--<c:if test="${(tour.quantity - tour.booked) == 0}">--%>
+                            <%--<input type="text" name="quant" disabled="disabled">--%>
+                            <%--<button type="button" class="btn">Tour booked. Try to see something else.</button>--%>
+                        <%--</c:if>--%>
                     </form>
                 </div>
             </div>
@@ -157,6 +168,20 @@
 </div>
 
 <script>
+    function validateOrderQuantity(currentQ, form) {
+        var regex = /^\d+$/i;
+
+        if (!regex.test(form["quant"].value)) {
+            alert("Enter digit to quantity field.");
+        }
+        else if (currentQ < form["quant"].value) {
+            alert("You can't buy more tickets than left.");
+        }
+        else {
+            form.submit();
+        }
+    }
+
     function validateNumFields(tourid) {
         var validated = true;
 

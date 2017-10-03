@@ -29,11 +29,11 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="simple-txt-panel">
-                        <c:if test="${requestScope.get('err') == true}">
+                        <c:if test="${requestScope.get('suc') == true}">
                             <p><c:out value="${bundle.success_lbl}" /></p>
                             <p><a href="/home"><c:out value="${bundle.success_but}" /></a></p>
                         </c:if>
-                        <c:if test="${requestScope.get('err') == false}">
+                        <c:if test="${requestScope.get('suc') == false}">
                             <p><c:out value="${bundle.failure_lbl}" /></p>
                             <p><a href="/home"><c:out value="${bundle.failure_but}" /></a></p>
                         </c:if>

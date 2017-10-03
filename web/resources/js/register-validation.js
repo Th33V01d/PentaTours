@@ -58,7 +58,9 @@ function validate(form, document) {
     var passmatchcond = (elems.password.value != elems.password2.value);
     var namecheck = !elems.name.value;
     var lastnamecheck = !elems.lastname.value;
-    var phonecheck = !elems.phone.value;
+    var phoneregex= /^\d+$/i;
+
+    var phonecheck = (!elems.phone.value || !phoneregex.test(elems.phone.value));
     var emailregex = /^\w+@\w+\.\w{1,4}$/i;
     var emailcheck = (!emailregex.test(elems.email.value));
 
